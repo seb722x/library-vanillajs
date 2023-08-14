@@ -99,3 +99,100 @@ window.onload = () => {
         document.querySelector('.header .header-b2').classList.remove('active');
     }
 }
+
+
+
+
+// books-wall
+const imageWrapper = document.getElementById("imageWrapper");
+const nextButton = document.getElementById("nextButton");
+const imagesPerPage = 8;
+let currentPage = 0;
+const totalImages = 8;
+
+
+const bookInfo = {
+    1: {
+        title: "la biblia",
+        price: 80000
+    },
+    2: {
+        title: "Código de davinci",
+        price: 90000
+    },
+    3: {
+        title: "Don quijote de la amncha",
+        price: 44000
+    },
+    
+    4: {
+        title: "El hobbit",
+        price: 60000
+    },
+    
+    5: {
+        title: "Harry potter",
+        price: 100000
+    },
+    
+    6: {
+        title: "Viaje al centro de la tierra",
+        price: 90000
+    },
+
+    7: {
+        title: "Mobie Dick",
+        price: 90000
+    },
+
+    8: {
+        title: "Una vida con propósito",
+        price: 90000
+    },
+  
+};
+
+
+
+// function to load images in the wrapper
+function loadImages(startIndex) {
+    imageWrapper.innerHTML = ""; // Limpiar 
+
+    for (let i = startIndex; i < startIndex + imagesPerPage; i++) {
+        const imageNumber = (i % totalImages) + 1; // Cambio aquí
+        const imageSrc = `assets/books/${imageNumber}.jpg`;
+
+        const box = document.createElement("div");
+        box.classList.add("box");
+
+        const icons = document.createElement("div");
+        icons.classList.add("icons");
+       
+
+        const image = document.createElement("div");
+        image.classList.add("image");
+        image.innerHTML = `<img src="${imageSrc}" alt="">`;
+
+        const content = document.createElement("div");
+        content.classList.add("content");
+        const imageNumberStr = imageNumber.toString(); // Convertir el número de imagen a cadena para acceder a bookInfo
+        if (bookInfo.hasOwnProperty(imageNumberStr)) {
+            const bookDetails = bookInfo[imageNumberStr];
+            content.innerHTML = `
+                <h3>${bookDetails.title}</h3>
+                <div class="price"><span>${bookDetails.price}</span></div>
+                <a href="#" class="btn"> add to cart</a>
+            `;
+        }
+
+        box.appendChild(icons);
+        box.appendChild(image);
+        box.appendChild(content);
+        imageWrapper.appendChild(box);
+    }
+}
+
+
+// load first images
+loadImages(currentPage);
+
