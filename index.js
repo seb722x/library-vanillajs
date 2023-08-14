@@ -273,3 +273,63 @@ function updateTotal() {
     cartTotal.textContent = `$${totalPrice}`;
 }
 
+
+// cart listening
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBtn = document.getElementById("search-btn");
+    const closeBtn = document.getElementById("close-btn");
+    const overlayCard = document.getElementById("overlay-card");
+    const bookTitle = document.getElementById("book-title");
+    const bookAuthor = document.getElementById("book-author");
+    const bookDescription = document.getElementById("book-description");
+    const searchBox = document.getElementById("search-box");
+
+    function displayBookInfo(book) {
+        bookTitle.textContent = book.title;
+        bookAuthor.textContent = `Precio: $${book.price}`;
+        bookDescription.textContent = "";
+        overlayCard.style.display = "flex";
+    }
+
+    searchBtn.addEventListener("click", function () {
+        const searchTerm = searchBox.value.toLowerCase();
+
+        for (const id in bookInfo) {
+            const book = bookInfo[id];
+            if (book.title.toLowerCase().includes(searchTerm)) {
+                displayBookInfo(book);
+                return; 
+            }
+        }
+
+        bookTitle.textContent = "Libro no encontrado";
+        bookAuthor.textContent = "";
+        bookDescription.textContent = "";
+        overlayCard.style.display = "flex";
+    });
+
+    searchBox.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Evitar que se recargue la página
+            const searchTerm = searchBox.value.toLowerCase();
+
+            for (const id in bookInfo) {
+                const book = bookInfo[id];
+                if (book.title.toLowerCase().includes(searchTerm)) {
+                    displayBookInfo(book);
+                    return; 
+                }
+            }
+
+            bookTitle.textContent = "Libro no encontrado";
+            bookAuthor.textContent = "";
+            bookDescription.textContent = "";
+            overlayCard.style.display = "flex";
+        }
+    });
+
+    closeBtn.addEventListener("click", function () {
+        overlayCard.style.display = "none";
+    });
+});
+
