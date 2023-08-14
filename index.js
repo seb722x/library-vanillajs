@@ -196,3 +196,80 @@ function loadImages(startIndex) {
 // load first images
 loadImages(currentPage);
 
+
+// shopping-cart
+function handleAddToCartClick(event) {
+    const addButton = event.target; // Obtiene el botón "Add to Cart" 
+    const bookBox = addButton.closest(".box"); // Encuentra el contenedor 
+
+    if (bookBox) {
+        const imageNumber = bookBox.querySelector("img").getAttribute("src").match(/\d+/)[0]; // número de la imagen
+        const bookDetails = bookInfo[imageNumber]; // detalles del libro del objeto bookInfo
+
+        if (bookDetails) {
+            const title = bookDetails.title;
+            const price = bookDetails.price;
+
+            addItemToCart(title, parseFloat(price));
+        }
+    }
+}
+
+// Event-listener "Add to Cart"
+const addToCartButtons = document.querySelectorAll(".btn");
+addToCartButtons.forEach(button => {
+    button.addEventListener("click", handleAddToCartClick);
+});
+
+
+
+//shopping cart
+
+const cartButton = document.querySelector(".fa-shopping-cart");
+const cartOverlay = document.querySelector(".cart-overlay");
+const cartTotal = document.getElementById("cartTotal");
+const closeCartButton = document.getElementById("closeCart");
+const checkoutButton = document.getElementById("checkout");
+const cartItemsContainer = document.querySelector(".cart-items");
+const clearCartButton = document.getElementById("clearCartButton"); 
+
+let totalPrice = 0;
+
+cartButton.addEventListener("click", function () {
+    cartOverlay.style.display = "block";
+});
+
+closeCartButton.addEventListener("click", function () {
+    cartOverlay.style.display = "none";
+});
+
+
+clearCartButton.addEventListener("click", function () {
+    clearCart();
+});
+// Simulation
+function addItemToCart(title, price) {
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
+    cartItem.innerHTML = `<p>${title} - $${price}</p>`;
+    cartItemsContainer.appendChild(cartItem);
+    totalPrice += price;
+    updateTotal();
+
+    
+}
+
+
+// remove element from cart
+
+function clearCart() {
+    cartItemsContainer.innerHTML = ""; // Eliminar todos los elementos del carrito
+    totalPrice = 0; // Reiniciar el precio total
+    updateTotal(); // Actualizar el total en el carrito
+}
+
+// update element cart
+function updateTotal() {
+    cartTotal.textContent = `$${totalPrice}`;
+}
+
