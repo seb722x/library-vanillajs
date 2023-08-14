@@ -80,3 +80,22 @@ document.addEventListener("DOMContentLoaded", function() {
         loginContainer.style.display = "none";
     }
 });
+
+//init
+
+window.onscroll = () => {
+    if(window.scrollY > 81){
+        document.querySelector('.header .header-b2').classList.add('active');
+    }else{
+        document.querySelector('.header .header-b2').classList.remove('active');
+    }
+}
+
+
+window.onload = () => {
+    if(window.scrollY > 80){
+        document.querySelector('.header .header-b2').classList.add('active');
+    }else{
+        document.querySelector('.header .header-b2').classList.remove('active');
+    }
+}
