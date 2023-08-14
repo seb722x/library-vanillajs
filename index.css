@@ -146,3 +146,51 @@ section{
     z-index: 1000;
     
 }
+
+body{
+    height: 200rem;
+}
+
+.home{
+    background: url(/assets/banner/grey_back.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem
+}
+
+.home .row .content{
+    flex:1 1 42rem;
+}
+
+.home .row .book-wall{
+    flex:1 1 42rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+
+.home .row .book-wall a img{
+    height: 25.1rem;
+}
+
+.home .row .book-wall a:hover img{
+    transform:scale(0.9)
+}
+
+.home .row .content h3{
+    color: var(--black);
+    font-size: 4.5rem;
+}
+
+.home .row .content p{
+    color: var(--clear-color);
+    font-size: 1.5rem;
+    line-height: 2;
+    padding: 1rem 0;
+}
