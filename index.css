@@ -47,3 +47,102 @@ html::-webkit-scrollbar-thumb{
 section{
     padding: 5.2rem 8.7%;
 }
+
+
+.btn{
+    margin-top: 0.8rem;
+    display:inline-block;
+    border-radius: .5rem;
+    padding: .9rem 3.1rem;
+    color: #fff;
+    background:var(--red);
+    font-size: 1.8rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.header .header-a1{
+    background: #fff;
+    padding:1.4rem 9%;
+    align-items: center;
+    justify-content: space-between;
+    display:flex;
+}
+
+.header .header-a1 .logo{
+    font-size: 2.2rem;
+    font-weight: bolder;
+    color:var(--black);
+}
+
+.header .header-a1 .logo i{
+    color: var(--red);
+}
+
+.header .header-a1 .search-form{
+
+    width: 52.2rem;
+    height: 5.3rem;
+    border: var(--border);
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: .52rem;
+    
+}
+
+.header .header-a1 .search-form input{
+    font-size: 1.7rem;
+    padding: 0 1.8rem;
+    height: 100%;
+    width: 100%;
+    text-transform: none;
+    color: var(--black);
+}
+
+
+
+
+.header  .header-a1 .icons div, 
+.header .header-a1 .icons a{
+    font-size: 2.7rem;
+    margin-left: 1rem;
+    color: var(--black);
+    cursor: pointer;
+}
+
+
+.header  .header-a1 .icons div:hover, 
+.header .header-a1 .icons a:hover{
+    color: var(--red)
+}
+
+
+.header .header-b2{
+    background:var(--red);
+}
+
+.header .header-b2 .navbar{
+    text-align: center;
+}
+
+.header .header-b2 .navbar a{
+    color:#fff;
+    display: inline-block;
+    padding: 1.3rem;
+    font-size: 1.6rem;
+
+}
+
+.header .header-b2 .navbar a:hover{
+    background: var(--dark-color);
+    
+}
+
+.header .header-b2.active{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 1000;
+    
+}
